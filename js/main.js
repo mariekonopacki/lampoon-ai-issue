@@ -4,12 +4,15 @@ let pageContent = document.getElementById("piece-content");
 let titleContent = document.getElementById("piece-title");
 
 let pieceNumber = 0;
-let path = location.hash;
+const path = location.hash;
 const highestPieceKey = Object.keys(pieces).length - 1
 checkPath(path)
+loadStockChart();
 
 window.addEventListener('hashchange', function(){
-    reloadPage()
+    console.log("yo")
+    const path = location.hash;
+    checkPath(path)
 })
 
 function checkPath(path){
