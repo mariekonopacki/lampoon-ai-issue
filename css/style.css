@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Overpass+Mono&family=PT+Mono&display=swap');
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: black;
+    font-family: 'Overpass Mono', monospace;
+
+}
+
+.background-grid {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    z-index: -5;
+    position: absolute;
+    background-size: 35px 35px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .20) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .20) 1px, transparent 1px);
+    height: 100%;
+    -webkit-filter: blur(1px);
+}
+
+
+.row {
+    margin: 0;
+}
+
+h1 {
+    font-family: 'VT323', monospace;
+}
+
+h2 {
+    font-family: 'Overpass Mono', monospace;
+    color: #2ae942;
+    font-size: 17px;
+}
+
+h3 {
+    font-family: 'VT323', monospace;
+}
+
+.header {
+    margin: 20px auto;
+    width: 80%;
+    height: 17vh;
+    background-color: rgba(5,54,25, 0.9);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .10) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
+    border: 1px solid #2ae942;
+    border-radius: 5px;
+    padding: 7px;
+    position: relative;
+}
+
+.table > tbody> tr > td {
+    border: 1px solid #2ae942;
+}
+
+.titles-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    width: 100%;
+    padding-top: 22px;
+    height: 100%;
+}
+
+.header-card-title {
+    background-color: rgba(27,189,98, 0.8);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .10) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
+    border: 2px solid #5dfea7;
+    border-radius: 3px;
+    padding: 5px;
+    color: #5dfea7;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: auto;
+    margin-right: 7px;
+    height: 100%;
+    width: 100%;
+}
+
+.header-card {
+    border: 1px solid #2ae942;
+    text-align: center;
+    height: 100%;
+}
+
+.header-card-upper {
+    background-color: rgb(14, 134, 41);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(3, 90, 42, 0.6) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(3, 90, 42, 0.6) 1px, transparent 1px);
+    border: 1px solid #2ae942;
+    padding: 5px 20px;
+    text-align: center;
+    border-radius: 2px;
+    width: 25%;
+    position: absolute;
+    top: -10px;
+    left: -15px;
+    z-index: 300;
+}
+
+.header-card-upper h2 {
+    margin: 0;
+    color: #23fc47;
+
+}
+
+.content {
+    margin: 0 auto;
+    padding: 50px 0;
+    padding-bottom: 50px;
+    width: 90%;
+    height: 80vh;
+}
+
+
+.piece-container {
+    height: 100%;
+    background-color: rgba(5,54,25, 0.9);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .10) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
+    border: 1px solid #2ae942;
+    border-radius: 5px;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tag {
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    color: #2ae942;
+    height: 7%;
+    background-color: rgba(0,0,0,.3);
+    margin-bottom: 7px;
+    border: 1px solid #2ae942;
+    border-radius: 3px;
+}
+
+.question {
+    font-family: 'VT323', monospace;
+    height: 20px;
+    width: 20px;
+    background-color: rgb(8, 117, 45);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .10) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
+    color: #5dfea7;
+    border: 2px solid #5dfea7;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.piece {
+    border: 2px solid #2ae942;
+    background-color: rgba(27,189,98, 0.8);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .06) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .06) 1px, transparent 1px);
+    border-radius: 3px;
+    color: #092f06;
+    padding: 30px;
+    height: 93%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#piece-content {
+    margin: 20px 0;
+}
+
+
+.back-next {
+    font-family: 'Overpass Mono', monospace;
+    color: #2ae942;
+    font-size: 18px;
+    height: 15%;
+}
+
+.back-next-button {
+    background-color: rgba(5,54,25, 0.9);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .10) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
+    border: 1px solid #2ae942;
+
+    padding: 5px 20px;
+    margin: 15px 7px;
+    font-family: 'VT323', monospace;
+    border-radius: 3px;
+    font-size: 19px;
+    color: #2ae942;
+    transition:background-color .1s ease-in;
+}
+
+.back-next-button:hover {
+    background-color: #2ae942;
+    color: black;
+}
+
+.back-next-button:focus {
+    outline: none !important;
+}
+
+
+.axis {
+    stroke: #2ae942;
+}
+
+.svg {
+    z-index: 100;
+    position: absolute;
+}
+
+.stock-card-container {
+    border: 1px solid #2ae942;
+    border-radius: 3px;
+    background-color: rgba(0,0,0,.3);
+    padding: 0px;
+    position: relative;
+}
+
+.stock-number {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 7px;
+    padding: 5px 15px;
+    font-family: 'VT323', monospace;
+    border-radius: 2px;
+    font-size: 19px;
+    border: 1px solid #25c339;
+    background-color: rgba(10,70,10, 0.9);
+    color: #2ae942;
+}
+
+.stock-number span {
+    opacity: 1;
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+    0% { opacity: 1; }
+    60% { opacity: 1; }
+    61% { opacity: .7; }
+    100% { opacity: .7; }
+}
+
+#stock-card {
+    width: 100%;
+    height: 70%;
+    text-align: left;
+}
+
+.stock-title {
+    height: 30%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stock-title h2 {
+    margin: 0;
+}
+
+.jester {
+    max-width: 100%;
+    height: auto;
+    background-color: rgba(0,0,0,.3);
+    background-image: url('../assets/jester.gif');
+    background-size: 130%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 3px;
+
+}
+
+
+.title-display > div {
+    padding:0px;
+}
+
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-button {
+    background-color: rgba(24, 155, 81, 0.5);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .10) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
+    border: 2px solid #48d086;
+    border-radius: 3px;
+    color: #4fde90;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.header-button + .header-button {
+    margin-top: 10px;
+}
+
+.header-button h2 {
+    align-self: center;
+    color: #5dfea7;
+    margin: 0;
+}
+
+.header-button h2 i {
+    color: black;
+}
+
+.fa.fa-info-circle {
+    font-size:20px;
+    color:black;
+    margin-left: 15px;
+}
+
+.ibis {
+    height: 20px;
+    margin-left: 15px;
+}
+
+.axis-grid line {
+    stroke: rgba(30,255,30,.30);
+}
+
+.line {
+    fill: none;
+}
+
+.vanitas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto 0;
+    padding-top: 15px;
+}
+
+.letter {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    width: 2vw;
+    height: 2vw;
+    text-align: center;
+    line-height: 2vw;
+    border-radius: 1vw;
+    background-color: rgba(0,0,0,.2);
+    border: 1px solid #2ae942;
+    color: #2ae942;
+    margin: 0 0vw;
+    display: inline-block;
+    position: relative;
+}
+
+.letter::before{
+    content: '';
+    position: absolute;
+    top: .9vw;
+    left: -.7vw;
+    width: .7vw;
+    height: 2px;
+    background: #2ae942;
+    z-index: 0;
+}
+
+
+.letter:first-child::before {
+    display: none;
+}
+
+.header-info-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto 0;
+}

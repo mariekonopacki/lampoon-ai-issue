@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The AI# - The Harvard Lampoon</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="header row col-12">
+            <div class="header-card-upper"><h2>THE HARVARD LAMPOON</h2></div>
+
+            <div class="col-md-3 titles-container">
+                    <div class="header-card-title"><h1>J.E.S.T.E.R.</h1></div>
+                </div>
+                <div class="header-card col-2 jester"></div>
+                <div class="col-3 header-info-section">
+                    <div class="buttons-container">
+                        <div class="header-button"><h2>INFO</h2></div>
+                        <div class="header-button"><h2>MASTHEAD</h2></div>
+                    </div>
+                    <div class="vanitas">
+                        <div class="letter">V</div>
+                        <div class="letter">A</div>
+                        <div class="letter">N</div>
+                        <div class="letter">I</div>
+                        <div class="letter">T</div>
+                        <div class="letter">A</div>
+                        <div class="letter">S</div>
+                    </div>
+                </div>
+                <div class="col-3 stock-card-container">
+                    <div id="stock-card"></div>
+                    <div class="stock-title"><h2>LAMPOON STOCK PORTFOLIO</h2></div>
+                    <div class="stock-number"><span>– 0.44% &#x25BC;</span></div>
+                </div>
+    </div>
+
+    <div class="content row">
+        <div class="col-5 piece-container">
+            <div class="tag"><span>COMEDY BY ARTIFICIAL INTELLIGENCE</span><div class="question">?</div></div>
+            <div class="piece">
+                <div>
+                    <h3 id="piece-title">Title of Piece</h3>
+                    <p id="piece-content">aldifjlsdkfjskldfjskldfjsldkfjlskdf kldsjflasdkf akdjfskdfj sldkfalksd  kdkfjs fkkf s skdjf skjfdlsf</p>
+                </div>
+                <div class="back-next row justify-content-between">
+                    <button onclick="previousPiece()" class="back-next-button shadow-none">&#8592; PREVIOUS PIECE</button>
+                    <button onclick="nextPiece()" class="back-next-button shadow-none">NEXT PIECE &#8594;</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/pieces.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
