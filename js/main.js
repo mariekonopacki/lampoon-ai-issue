@@ -3,27 +3,26 @@
 let pageContent = document.getElementById("piece-content");
 let titleContent = document.getElementById("piece-title");
 
-reloadPage()
+let pieceNumber = 0;
+let path = location.hash;
+const highestPieceKey = Object.keys(pieces).length - 1
+checkPath(path)
 
 window.addEventListener('hashchange', function(){
     reloadPage()
 })
 
-function reloadPage(){
-    // check page to determine what page to load first piece
-    let path = location.hash;
+function checkPath(path){
     let pieceNumber = 0;
     if (path !== ""){
         // Select piece from the route to load page with
         pieceNumber = path.substr(1);
     } else{
         // Select random piece to load page with
-        const highestPieceKey = Object.keys(pieces).length - 1
         pieceNumber = Math.floor(Math.random() * highestPieceKey)
     }
     let piece = pieces[pieceNumber]
     loadPiece(piece)
-    loadStockChart()
 }
 
 function loadPiece(piece) {
@@ -39,12 +38,13 @@ function loadPiece(piece) {
 
 function nextPiece() {
     // Loop through array of pieces
+    console.log("changing piece")
     if (pieceNumber >= highestPieceKey) {
         pieceNumber = 0
     } else {
         pieceNumber += 1
     }
-
+    window.location.hash = pieceNumber
     loadPiece(pieces[pieceNumber])
 }
 
@@ -55,7 +55,7 @@ function previousPiece() {
     } else {
         pieceNumber = highestPieceKey
     }
-
+    window.location.hash = pieceNumber
     loadPiece(pieces[pieceNumber])
 }
 
