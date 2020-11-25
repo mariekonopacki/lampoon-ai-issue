@@ -3,13 +3,28 @@
 let pageContent = document.getElementById("piece-content");
 let titleContent = document.getElementById("piece-title");
 
-// Select random piece to load page with
-var highestPieceKey = Object.keys(pieces).length - 1
-let pieceNumber = Math.floor(Math.random() * highestPieceKey)
-let firstPiece = pieces[pieceNumber]
+reloadPage()
 
-loadPiece(firstPiece)
-loadStockChart()
+window.addEventListener('hashchange', function(){
+    reloadPage()
+})
+
+function reloadPage(){
+    // check page to determine what page to load first piece
+    let path = location.hash;
+    let pieceNumber = 0;
+    if (path !== ""){
+        // Select piece from the route to load page with
+        pieceNumber = path.substr(1);
+    } else{
+        // Select random piece to load page with
+        const highestPieceKey = Object.keys(pieces).length - 1
+        pieceNumber = Math.floor(Math.random() * highestPieceKey)
+    }
+    let piece = pieces[pieceNumber]
+    loadPiece(piece)
+    loadStockChart()
+}
 
 function loadPiece(piece) {
     // Load title and piece content in HTML
