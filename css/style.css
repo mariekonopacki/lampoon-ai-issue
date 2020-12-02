@@ -3,6 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Overpass+Mono&family=PT+Mono&display=swap');
 
+/* For mobile phones: */
+[class*="col-"] {
+    width: 25%;
+}
 html {
     height: 100%;
 }
@@ -34,12 +38,13 @@ body {
 
 h1 {
     font-family: 'VT323', monospace;
+    font-size: 2vw;
 }
 
 h2 {
     font-family: 'Overpass Mono', monospace;
     color: #2ae942;
-    font-size: 17px;
+    font-size: 1vw;
 }
 
 h3 {
@@ -49,7 +54,6 @@ h3 {
 .header {
     margin: 20px auto;
     width: 80%;
-    height: 17vh;
     background-color: rgba(5,54,25, 0.9);
     background-size: 3px 3px;
     background-image:
@@ -70,9 +74,7 @@ h3 {
     flex-direction: column;
     justify-content: end;
     align-items: end;
-    width: 100%;
     padding-top: 22px;
-    height: 100%;
 }
 
 .header-card-title {
@@ -379,16 +381,16 @@ h3 {
 
 .letter {
     font-family: 'VT323', monospace;
-    font-size: 20px;
+    font-size: 1.7vw;
     width: 2vw;
     height: 2vw;
     text-align: center;
     line-height: 2vw;
     border-radius: 1vw;
     background-color: rgba(0,0,0,.2);
-    border: 1px solid #2ae942;
+    border: .1vw solid #2ae942;
     color: #2ae942;
-    margin: 0 0vw;
+    margin: 0 .5vw;
     display: inline-block;
     position: relative;
 }
@@ -398,8 +400,8 @@ h3 {
     position: absolute;
     top: .9vw;
     left: -.7vw;
-    width: .7vw;
-    height: 2px;
+    width: .6vw;
+    height: .2vw;
     background: #2ae942;
     z-index: 0;
 }
@@ -414,4 +416,15 @@ h3 {
     flex-direction: column;
     justify-content: space-between;
     margin: auto 0;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  [class*="col-"] {
+    width: 100%;
+    }
+
+    .header {   
+        height: 17vh;
+    }
 }
