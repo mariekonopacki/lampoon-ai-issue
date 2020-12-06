@@ -4,16 +4,62 @@ let pageContent = document.getElementById("piece-content");
 let titleContent = document.getElementById("piece-title");
 
 let pieceNumber = 0;
+var main_typer;
 const path = location.hash;
-const highestPieceKey = Object.keys(pieces).length - 1
-checkPath(path)
-loadStockChart();
+const highestPieceKey = Object.keys(pieces).length - 1;
+$(".content").fadeOut(0);
+
+// Onload function
+function initialise() {
+    console.log("init")
+    // M: Since d3 is temporaily disabled, I surround this function in a try-catch.
+    try {
+        loadStockChart();
+    } catch (error) {
+        console.error(error);
+    }
+    
+    // Main Title Typer
+    randomBackTyper(".header-card-title", ['J.E.S.T.E.R.', 'J.E.S.T.T.A.', 'A.U.T.O.M.A', 'L.M.P.O.O.N.']);
+    // Stock Title Typer
+    randomBackTyper(".stock-title h2", ['LAMPOON STOCK PORTFOLIO', 'LAMPOON STONK PORTFOLIO']);
+    setTimeout(
+        function(){
+            $(".content").fadeIn(500);
+            // Content Box Title Typer
+            randomBackTyper(".tag span", ['COMEDY BY ARTIFICIAL INTELLIGENCE', 'COMEDY BY MACHINE LEARNING', 'COMEDY BY LAMPOON A.I.']);
+            checkPath(path);
+        }, 
+        5000);
+}
 
 window.addEventListener('hashchange', function(){
     console.log("yo")
     const path = location.hash;
-    checkPath(path)
+    checkPath(path);
 })
+
+// Creates a typer with a random backspace delay.
+// tag: String selector for the element to be cleared and typed in.
+// arr: Array of string values do be shuffled in random order.
+function randomBackTyper(tag, arr){
+    var tag = document.querySelector(tag);
+    tag.innerHTML = "";
+    var options = {
+    strings: arr,
+    typeSpeed: 100,
+    backSpeed: 100,
+    backDelay: Math.floor(Math.random() * 15000) + 5000,
+    loop: true,
+    cursorChar: '|',
+    // Disable cursor due to unexpected positioning
+    showCursor: false,
+    // fadeOut: true,
+    // fadeOutClass: 'typed-fade-out',
+    // autoInsertCss: true,
+    };
+    new Typed(tag, options);
+}
 
 function checkPath(path){
     let pieceNumber = 0;
@@ -25,15 +71,32 @@ function checkPath(path){
         pieceNumber = Math.floor(Math.random() * highestPieceKey)
     }
     let piece = pieces[pieceNumber]
-    loadPiece(piece)
+    loadPiece(piece);
 }
 
 function loadPiece(piece) {
     // Load title and piece content in HTML
+    console.log(piece)
     titleContent.innerHTML = piece.title;
     fetch(piece.content).then(function(piece) {
         return piece.text().then(function(text) {
-            pageContent.innerHTML = text;
+            var options = {
+              strings: [text],
+              typeSpeed: 10,
+              startDelay: 500,
+              loop: false,
+              // Disable cursor due to unexpected positioning
+              showCursor: false,
+              cursorChar: "|",
+              onComplete: function() {
+                return $('.typed-cursor').remove();
+              }
+            };
+            if (main_typer){
+                main_typer.destroy();
+            }
+            pageContent.innerHTML = "";
+            main_typer = new Typed(pageContent, options);
         });
     });
 }
@@ -115,3 +178,5 @@ function loadStockChart() {
     repeat();
 
 }
+
+$(document).ready(initialise);
