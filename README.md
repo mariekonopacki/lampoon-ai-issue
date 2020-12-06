@@ -1,2 +1,2 @@
 # J.E.S.T.E.R.
-Harvard Lampoon's AI Issue
+[The Harvard Lampoon's](https://harvardlampoon.com) AI Issue
