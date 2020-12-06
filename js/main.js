@@ -1,13 +1,13 @@
-
+// Preload setup
 // Declare where piece content goes on page
-let pageContent = document.getElementById("piece-content");
+let pieceContent = document.getElementById("piece-content");
 let titleContent = document.getElementById("piece-title");
 
 let pieceNumber = 0;
 var main_typer;
 const path = location.hash;
 const highestPieceKey = Object.keys(pieces).length - 1;
-$(".content").fadeOut(0);
+$(".piece-container").hide(0);
 
 // Onload function
 function initialise() {
@@ -23,14 +23,20 @@ function initialise() {
     randomBackTyper(".header-card-title", ['J.E.S.T.E.R.', 'J.E.S.T.T.A.', 'A.U.T.O.M.A', 'L.M.P.O.O.N.']);
     // Stock Title Typer
     randomBackTyper(".stock-title h2", ['LAMPOON STOCK PORTFOLIO', 'LAMPOON STONK PORTFOLIO']);
+    var cover_wait_time = 3000;
+    if (localStorage.getItem("cover_loaded") === null) {
+        var cover_wait_time = 10000;
+        localStorage.setItem("cover_loaded", true);
+    }
+     $(".cover-container").delay(cover_wait_time).fadeOut(500);
+     $(".piece-container").delay(cover_wait_time + 1000).fadeIn(1000);
     setTimeout(
         function(){
-            $(".content").fadeIn(500);
             // Content Box Title Typer
             randomBackTyper(".tag span", ['COMEDY BY ARTIFICIAL INTELLIGENCE', 'COMEDY BY MACHINE LEARNING', 'COMEDY BY LAMPOON A.I.']);
             checkPath(path);
         }, 
-        5000);
+        cover_wait_time + 1000);
 }
 
 window.addEventListener('hashchange', function(){
@@ -78,27 +84,35 @@ function loadPiece(piece) {
     // Load title and piece content in HTML
     console.log(piece)
     titleContent.innerHTML = piece.title;
-    fetch(piece.content).then(function(piece) {
-        return piece.text().then(function(text) {
-            var options = {
-              strings: [text],
-              typeSpeed: 10,
-              startDelay: 500,
-              loop: false,
-              // Disable cursor due to unexpected positioning
-              showCursor: false,
-              cursorChar: "|",
-              onComplete: function() {
-                return $('.typed-cursor').remove();
-              }
-            };
-            if (main_typer){
-                main_typer.destroy();
-            }
-            pageContent.innerHTML = "";
-            main_typer = new Typed(pageContent, options);
+    var text_delay = 2000;
+    $('#art-content').hide();
+    if (piece.art != "no"){
+        $('#art-content').attr('src', piece.art);
+        $('#art-content').fadeIn(2000);
+        text_delay = 5000;
+    }
+        $('#piece-content').show();
+        fetch(piece.content).then(function(piece) {
+            return piece.text().then(function(text) {
+                var options = {
+                  strings: [text],
+                  typeSpeed: 10,
+                  startDelay: text_delay,
+                  loop: false,
+                  // Disable cursor due to unexpected positioning
+                  showCursor: false,
+                  cursorChar: "|",
+                  onComplete: function() {
+                    return $('.typed-cursor').remove();
+                  }
+                };
+                if (main_typer){
+                    main_typer.destroy();
+                }
+                pieceContent.innerHTML = "";
+                main_typer = new Typed(pieceContent, options);
+            });
         });
-    });
 }
 
 
