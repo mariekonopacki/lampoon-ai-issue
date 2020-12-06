@@ -11,19 +11,22 @@
 </head>
 <body>
     <div class="background-grid"></div>
-    <div class="header row col-12">
-            <div class="header-card-upper"><h2>THE HARVARD LAMPOON</h2></div>
+    <div class="header row col-12 mx-auto" style="width:90%">
+            <div class="header-card-upper fixed-top ml-n3 mt-n2 d-none d-md-block">
+                <h2>THE HARVARD LAMPOON</h2>
+            </div>
 
-            <div class="col-md-3 titles-container">
-                    <div class="header-card-title"><h1>J.E.S.T.E.R.</h1></div>
-                </div>
-                <div class="header-card col-2 jester"></div>
-                <div class="col-3 header-info-section">
+            <div class="col-3 pb-2 pt-4 ml-n3 titles-container d-none d-md-block">
+                    <div class="header-card-title align-items-center"><h1>J.E.S.T.E.R.</h1></div>
+            </div>
+                <div class="header-card col-2 my-2 d-none d-md-block jester"></div>
+                <div class="col-12 col-md-3 my-2 header-info-section">
                     <div class="buttons-container">
+                        <h1 class="header-card-title d-block d-sm-block d-md-none">J.E.S.T.E.R.</h1>
                         <div class="header-button"><h2>INFO</h2></div>
                         <div class="header-button"><h2>MASTHEAD</h2></div>
                     </div>
-                    <div class="vanitas">
+                    <div class="vanitas d-none d-md-inline-block mx-auto">
                         <div class="letter">V</div>
                         <div class="letter">A</div>
                         <div class="letter">N</div>
@@ -33,15 +36,19 @@
                         <div class="letter">S</div>
                     </div>
                 </div>
-                <div class="col-3 stock-card-container">
+                <div class="col-md-3 d-none d-md-block my-2 stock-card-container">
                     <div id="stock-card"></div>
                     <div class="stock-title"><h2>LAMPOON STOCK PORTFOLIO</h2></div>
                     <div class="stock-number"><span>– 0.44% &#x25BC;</span></div>
                 </div>
+                <div class="col-md-1 d-none d-md-block ml-3 my-2 stock-card-container">
+                    <div id="stock-card"></div>
+                    <div class="stock-title"><h2>CONTENT</h2></div>
+                </div>
     </div>
 
     <div class="content row">
-        <div class="col-5 piece-container">
+        <div class="col-12 col-lg-6 col-xl-5 piece-container">
             <div class="tag"><span>COMEDY BY ARTIFICIAL INTELLIGENCE</span><div class="question">?</div></div>
             <div class="piece">
                 <div>
@@ -57,8 +64,8 @@
 
 
     </div>
-
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <!-- IP: Hiding d3 viz for now while we continue fixing responsivness -->
+    <!-- <script src="https://d3js.org/d3.v6.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/pieces.js"></script>
     <script src="js/main.js"></script>

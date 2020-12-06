@@ -52,8 +52,7 @@ h3 {
 }
 
 .header {
-    margin: 20px auto;
-    width: 80%;
+    margin-top:30px;
     background-color: rgba(5,54,25, 0.9);
     background-size: 3px 3px;
     background-image:
@@ -61,8 +60,8 @@ h3 {
             linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
     border: 1px solid #2ae942;
     border-radius: 5px;
-    padding: 7px;
-    position: relative;
+    /*padding: 7px;
+    position: relative;*/
 }
 
 .table > tbody> tr > td {
@@ -92,9 +91,9 @@ h3 {
     flex-direction: row;
     justify-content: center;
     text-align: center;
-    align-items: center;
-    margin-top: auto;
-    margin-right: 7px;
+    /*align-items: center;*/
+    /*margin-top: auto;
+    margin-right: 7px;*/
     height: 100%;
     width: 100%;
 }
@@ -117,8 +116,8 @@ h3 {
     border-radius: 2px;
     width: 25%;
     position: absolute;
-    top: -10px;
-    left: -15px;
+    /*top: -10px;
+    left: -15px;*/
     z-index: 300;
 }
 
@@ -220,7 +219,7 @@ h3 {
     border: 1px solid #2ae942;
 
     padding: 5px 20px;
-    margin: 15px 7px;
+    /*margin: 15px 7px;*/
     font-family: 'VT323', monospace;
     border-radius: 3px;
     font-size: 19px;
@@ -390,12 +389,13 @@ h3 {
     background-color: rgba(0,0,0,.2);
     border: .1vw solid #2ae942;
     color: #2ae942;
-    margin: 0 .5vw;
+    /*margin: 0 .5vw;*/
     display: inline-block;
-    position: relative;
+    /*position: relative;*/
 }
 
-.letter::before{
+/*IP: Hiding dashes for now to deal with responsiveness. Can add back later if needed */
+/*.letter::before{
     content: '';
     position: absolute;
     top: .9vw;
@@ -404,7 +404,7 @@ h3 {
     height: .2vw;
     background: #2ae942;
     z-index: 0;
-}
+}*/
 
 
 .letter:first-child::before {
@@ -424,7 +424,7 @@ h3 {
     width: 100%;
     }
 
-    .header {   
+    .header {
         height: 17vh;
     }
 }
