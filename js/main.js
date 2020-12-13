@@ -18,25 +18,31 @@ function initialise() {
     } catch (error) {
         console.error(error);
     }
-    
+
     // Main Title Typer
     randomBackTyper(".header-card-title", ['J.E.S.T.E.R.', 'J.E.S.T.T.A.', 'A.U.T.O.M.A', 'L.P.N. A.I']);
     // Stock Title Typer
     randomBackTyper(".stock-title h2", ['LAMPOON STOCK PORTFOLIO', 'LAMPOON "NOT STONKS" PORTFOLIO', 'LAMPOON "STONKS" PORTFOLIO']);
-    var cover_wait_time = 3000;
+    // Masthead Modal Title Typer
+    randomBackTyper(".masthead-title", ['Masthead','Masthead']);
+    // Info Modal Title Typer
+    randomBackTyper(".info-title", ['Info','Info']);
+    // Vanitas Modal Title Typer
+    randomBackTyper(".vanitas-title", ['Vanitas','Vanitas']);
+    var cover_wait_time = 0;
     if (localStorage.getItem("cover_loaded") === null) {
-        var cover_wait_time = 10000;
+        var cover_wait_time = 0;
         localStorage.setItem("cover_loaded", true);
     }
      $(".cover-container").delay(cover_wait_time).fadeOut(500);
-     $(".piece-container").delay(cover_wait_time + 1000).fadeIn(1000);
+     $(".piece-container").delay(cover_wait_time).fadeIn(0);
     setTimeout(
         function(){
             // Content Box Title Typer
             randomBackTyper(".tag span", ['COMEDY BY ARTIFICIAL INTELLIGENCE', 'PIECES BY MACHINE LEARNING', 'CREATED BY LAMPOON A.I.']);
             checkPath(path);
-        }, 
-        cover_wait_time + 1000);
+        },
+        cover_wait_time);
 }
 
 window.addEventListener('hashchange', function(){
@@ -191,6 +197,18 @@ function loadStockChart() {
 
     repeat();
 
+}
+
+function showInfo() {
+    $("#infoModal").modal("show");
+}
+
+function showMasthead() {
+    $("#mastheadModal").modal("show");
+}
+
+function showVanitas() {
+    $("#vanitasModal").modal("show");
 }
 
 $(document).ready(initialise);

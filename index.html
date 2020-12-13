@@ -4,12 +4,78 @@
     <meta charset="UTF-8">
     <title>The AI# - The Harvard Lampoon</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 
+
+
 </head>
 <body>
+    <!-- Info Modal -->
+      <div class="modal fade" id="infoModal" role="dialog">
+        <div class="modal-dialog piece-container">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center popup-container">
+              <center><h4 class="info-title modal-title" style="color: #2ae942">Info</h4></center>
+            </div>
+            <div class="modal-body popup-body">
+                <center>
+                    <p>Info content goes here</p>
+                </center>
+            </div>
+            <div class="modal-footer piece-container">
+              <button type="button" class="btn btn-default" data-dismiss="modal" style="color: #2ae942">Exit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Masthead Modal -->
+      <div class="modal fade" id="mastheadModal" role="dialog">
+        <div class="modal-dialog piece-container">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center popup-container">
+              <center><h4 class="masthead-title modal-title" style="color: #2ae942">Masthead</h4></center>
+            </div>
+            <div class="modal-body popup-body">
+                <center>
+                    <p><strong>BOARD OF EDITORS</strong><br />Maxwell A. Gay &rsquo;21-&rsquo;22,&nbsp;<em>President</em><br />Gavin P. Lifrieri &rsquo;21-&rsquo;22,&nbsp;<em>Ibis</em><br />Lia R. Kiam &rsquo;21-&rsquo;22,&nbsp;<em>Narthex</em><br />Marie A. Konopacki &rsquo;21,&nbsp;<em>Narthex</em><br />Nicholas G. Jaeger &rsquo;21,&nbsp;<em>Treasurer</em><br /><br />B. W. Mott &rsquo;19-&rsquo;21<br />S. Wu &rsquo;20-&rsquo;21<br />J.T. Ball &rsquo;20-&rsquo;22<br />Y. Ji &rsquo;21<br />L. G. Fadiman &rsquo;21-&rsquo;22<br />C. de Losada &rsquo;21<br />F. S. Shannel &rsquo;21-&rsquo;22<br />J. L. Gilbert &rsquo;21<br />E. N. Orr &rsquo;21<br />J. P. Wolfe &rsquo;22<br />Y. M. Chamieh &rsquo;21-&rsquo;22<br />V. I. Nutting &rsquo;21-&rsquo;22<br />E. B. Chenevey &rsquo;22-&rsquo;23<br />S. K. Lam &rsquo;23<br />Montague &rsquo;21<br />B. G. Stern &rsquo;22-&rsquo;23<br />I. Prasad &rsquo;22-&rsquo;23<br />J. E. Caven &rsquo;21-&rsquo;22<br />J. R. Delgado &rsquo;22-&rsquo;23<br />M. A. Vasallo &rsquo;23<br />M. F. Pekala &rsquo;23-&rsquo;24<br /><br />Nicole A. Araya &rsquo;21-&rsquo;22,&nbsp;<em>Blot</em><br />Kate N. Rachesky &rsquo;22,&nbsp;<em>Sanctum</em><br />Grace Y. Shi &rsquo;22,&nbsp;<em>Hautbois</em><br />Josephine S. Roberts &rsquo;22,&nbsp;<em>Hautbois</em><br />Juan F. Arenas R. &rsquo;19-&rsquo;22,&nbsp;<em>Arenas</em><br />John L. Nugent &rsquo;21-&rsquo;22,&nbsp;<em>Sackbrarian</em><br />Posy K. Stoller &rsquo;21-&rsquo;22,&nbsp;<em>Librarian</em><br />Dash P. D. Wasserstein &rsquo;22,&nbsp;<em>Librarian</em><br />Adiya A. Abdilkhay &rsquo;22, Navetum<br />Nicholas S. Grundlingh &rsquo;20-&rsquo;21,&nbsp;<em>Vanitas</em><br /><br /><strong>BUSINESS BOARD</strong><br />Dash P. D. Wasserstein &rsquo;22,&nbsp;<em>Business Manager</em><br />Adam S. Levin &rsquo;22-23,&nbsp;<em>Advertising Manager</em><br />Adiya A. Abdilkhay &rsquo;22,&nbsp;<em>Circulation Manager</em><br /><br />J. D. Wasserstein &rsquo;21<br />L. E. Graciano &rsquo;21-&rsquo;22<br />P. T. Magahis &rsquo;21<br />B. L. Weber &rsquo;21<br />S. M. A. Vik &rsquo;22-&rsquo;23<br />E. T. Laufer &rsquo;23<br /><br />Elmer W. Green, 1897-1977,&nbsp;<em>Grand Curator</em></p>
+                </center>
+            </div>
+            <div class="modal-footer piece-container">
+              <button type="button" class="btn btn-default" data-dismiss="modal" style="color: #2ae942">Exit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vanitas Modal -->
+      <div class="modal fade" id="vanitasModal" role="dialog">
+        <div class="modal-dialog piece-container">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center popup-container">
+              <center><h4 class="vanitas-title modal-title" style="color: #2ae942">Info</h4></center>
+            </div>
+            <div class="modal-body popup-body">
+                <center>
+                    <p>Vanitas content goes here</p>
+                </center>
+            </div>
+            <div class="modal-footer piece-container">
+              <button type="button" class="btn btn-default" data-dismiss="modal" style="color: #2ae942">Exit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     <div class="background-grid"></div>
     <div class="header row col-12 mx-auto" style="width:90%">
             <div class="header-card-upper fixed-top ml-n3 mt-n2 d-none d-md-block">
@@ -22,11 +88,11 @@
                 <div class="header-card col-2 my-2 d-none d-md-block jester"></div>
                 <div class="col-12 col-md-3 my-2 header-info-section">
                     <div class="buttons-container">
-                        <h1 class="header-card-title d-block d-sm-block d-md-none">J.E.S.T.E.R.</h1>
-                        <div class="header-button"><h2>INFO</h2></div>
-                        <div class="header-button"><h2>MASTHEAD</h2></div>
+                        <h1 class="header-card-title d-block d-sm-block d-md-none" style="font-size:200% !important">J.E.S.T.E.R.</h1>
+                        <button type="button" class="btn header-button" id="infoButton" onclick="showInfo()"><h2 style="font-size:100% !important">INFO</h2></button>
+                        <button type="button" class="btn header-button" id="mastheadButton" onclick="showMasthead()"><h2 style="font-size:100% !important">MASTHEAD</h2></button>
                     </div>
-                    <div class="vanitas d-none d-md-inline-block mx-auto">
+                    <div class="vanitas d-none d-md-inline-block mx-auto" onclick="showVanitas()">
                         <div class="letter">V</div>
                         <div class="letter">A</div>
                         <div class="letter">N</div>
@@ -41,18 +107,16 @@
                     <div class="stock-title"><h2>LAMPOON STOCK PORTFOLIO</h2></div>
                     <div class="stock-number"><span>– 0.44% &#x25BC;</span></div>
                 </div>
-                <div class="col-md-1 d-none d-md-block ml-3 my-2 stock-card-container">
-                    <div id="stock-card"></div>
-                    <div class="stock-title"><h2>CONTENT</h2></div>
+                <div class="col-md-1 d-none d-md-block ml-3 my-2 editors-card-container">
+                    <div class="stock-title"><h2>EDITORS</h2></div><br>
+                    <div class="stock-title"><h2 style="font-size:0.8vw">BJF, Lit.<br>JSR, Art<br>MAK, Layout</h2></div>
                 </div>
     </div>
 
     <div class="content row">
-    	<div class="cover-container">
-    		<img id="cover" src="./art/cover.jpeg" alt="Cover" width="100%">
-    	</div>
-        <div class="col-12 col-lg-6 col-xl-5 piece-container">
+        <div class="col-12 col-lg-6 col-xl-5 piece-container my-0">
             <div class="tag"><span>COMEDY BY ARTIFICIAL INTELLIGENCE</span><div class="question">?</div></div>
+            <img class="piece-container mb-2" id="cover" src="./ads/aspen.jpg" alt="Aspen" width="100%">
             <div class="piece">
                 <div>
                     <h3 id="piece-title">Title of Piece</h3>
@@ -65,14 +129,23 @@
                 </div>
             </div>
         </div>
-
-
+        <div class="d-none d-lg-inline-block col-lg-6 col-xl-7">
+            <div class="piece-container">
+                <center>
+                    <h2>CONTENT & ADS TO GO HERE (Replace Text)</h2>
+                </center>
+                <br>
+                <img class="piece-container ml-4" id="cover" src="./art/cover.jpeg" alt="Cover" width="50%">
+                <br>
+            </div>
+        </div>
     </div>
+
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="js/pieces.js"></script>
     <script src="js/typed.min.js"></script>
     <script src="js/main.js"></script>
-
 </body>
 </html>

@@ -149,6 +149,33 @@ h3 {
     flex-direction: column;
 }
 
+.popup-container {
+    background-color: rgba(5,54,25, 0.9);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .10) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
+    border: 1px solid #2ae942;
+    border-radius: 5px;
+    padding: 7px;
+    display: flex;
+    /*flex-direction: column;*/
+}
+
+.popup-body {
+    border: 2px solid #2ae942;
+    background-color: rgba(27,189,98, 0.8);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .06) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .06) 1px, transparent 1px);
+    border-radius: 3px;
+    color: #092f06;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .tag {
     font-size: 16px;
     display: flex;
@@ -416,13 +443,36 @@ h3 {
     margin: auto 0;
 }
 
+.editors-card-container {
+    border: 1px solid #2ae942;
+    border-radius: 3px;
+    background-color: rgba(0,0,0,.3);
+    padding: 0px;
+    position: relative;
+}
+
+/*Hovering*/
+.header-card-title:hover, .header-button:hover, .letter:hover, .header-card-upper:hover {
+    background-color: rgba(27,189,98, 0.8);
+}
+.header-card-title:hover {
+    background-color: rgba(27,189,98, 1);
+}
+.header-card:hover,.editors-card-container:hover,.stock-number:hover {
+    background-color: rgba(27,189,98, 0.25);
+}
+.stock-card-container:hover{
+    background-color: rgba(27,189,98, 0.1);
+}
+
+
 @media only screen and (min-width: 768px) {
   /* For desktop: */
   [class*="col-"] {
     width: 100%;
     }
 
-    .header {
+/*    .header {
         height: 17vh;
-    }
+    }*/
 }
