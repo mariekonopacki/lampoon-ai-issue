@@ -12,8 +12,7 @@ $(".piece-container").hide(0);
 // Onload function
 function initialise() {
     console.log("init")
-    // M: Since d3 is temporaily disabled, I surround this function in a try-catch.
-    try {
+     try {
         loadStockChart();
     } catch (error) {
         console.error(error);
@@ -90,35 +89,35 @@ function loadPiece(piece) {
     // Load title and piece content in HTML
     console.log(piece)
     titleContent.innerHTML = piece.title;
-    var text_delay = 2000;
+    var text_delay = 1000;
     $('#art-content').hide();
     if (piece.art != "no"){
         $('#art-content').attr('src', piece.art);
-        $('#art-content').fadeIn(2000);
-        text_delay = 5000;
+        $('#art-content').fadeIn(200);
+        text_delay = 3000;
     }
-        $('#piece-content').show();
-        fetch(piece.content).then(function(piece) {
-            return piece.text().then(function(text) {
-                var options = {
-                  strings: [text],
-                  typeSpeed: 10,
-                  startDelay: text_delay,
-                  loop: false,
-                  // Disable cursor due to unexpected positioning
-                  showCursor: false,
-                  cursorChar: "|",
-                  onComplete: function() {
-                    return $('.typed-cursor').remove();
-                  }
-                };
-                if (main_typer){
-                    main_typer.destroy();
-                }
-                pieceContent.innerHTML = "";
-                main_typer = new Typed(pieceContent, options);
-            });
+    $('#piece-content').show();
+    fetch(piece.content).then(function(piece) {
+        return piece.text().then(function(text) {
+            var options = {
+              strings: [text],
+              typeSpeed: 10,
+              startDelay: text_delay,
+              loop: false,
+              // Disable cursor due to unexpected positioning
+              showCursor: false,
+              cursorChar: "|",
+              onComplete: function() {
+                return $('.typed-cursor').remove();
+              }
+            };
+            if (main_typer){
+                main_typer.destroy();
+            }
+            pieceContent.innerHTML = "";
+            main_typer = new Typed(pieceContent, options);
         });
+    });
 }
 
 
