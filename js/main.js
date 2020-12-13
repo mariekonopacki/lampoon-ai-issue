@@ -22,12 +22,17 @@ function initialise() {
     randomBackTyper(".header-card-title", ['J.E.S.T.E.R.', 'J.E.S.T.T.A.', 'A.U.T.O.M.A', 'L.P.N. A.I']);
     // Stock Title Typer
     randomBackTyper(".stock-title h2", ['LAMPOON STOCK PORTFOLIO', 'LAMPOON "NOT STONKS" PORTFOLIO', 'LAMPOON "STONKS" PORTFOLIO']);
+    // Stock Title Typer
+    randomBackTyper(".editor-title h2", ['EDITORS', 'DEVELOPERS']);
     // Masthead Modal Title Typer
-    randomBackTyper(".masthead-title", ['Masthead','Masthead']);
+    randomBackTyper(".masthead-title", ['Masthead','The Harvard Lampoon']);
+    randomBackTyper("#mastheadButton h2", ['MASTHEAD','MASTHEAD']);
     // Info Modal Title Typer
-    randomBackTyper(".info-title", ['Info','Info']);
-    // Vanitas Modal Title Typer
-    randomBackTyper(".vanitas-title", ['Vanitas','Vanitas']);
+    randomBackTyper(".info-title", ['Info','Vanitas']);
+    randomBackTyper("#infoButton h2", ['INFO','VANITAS']);
+    // Card Upper Title Typer
+    randomBackTyper(".header-card-upper h2", ['The Harvard Lampoon', "The Lampoon AI#"]);
+
     var cover_wait_time = 0;
     if (localStorage.getItem("cover_loaded") === null) {
         var cover_wait_time = 0;
@@ -79,7 +84,9 @@ function checkPath(path){
         pieceNumber = path.substr(1);
     } else{
         // Select random piece to load page with
-        pieceNumber = Math.floor(Math.random() * highestPieceKey)
+        // pieceNumber = Math.floor(Math.random() * highestPieceKey)
+        // Select cover piece to load page with
+        pieceNumber = 34
     }
     let piece = pieces[pieceNumber]
     loadPiece(piece);
@@ -89,35 +96,39 @@ function loadPiece(piece) {
     // Load title and piece content in HTML
     console.log(piece)
     titleContent.innerHTML = piece.title;
+    pieceContent.innerHTML = "";
+     $('#piece-content').hide();
+     $('#art-content').attr('src', "");
+     $('#art-content').hide();
     var text_delay = 1000;
-    $('#art-content').hide();
     if (piece.art != "no"){
         $('#art-content').attr('src', piece.art);
         $('#art-content').fadeIn(200);
         text_delay = 3000;
     }
-    $('#piece-content').show();
-    fetch(piece.content).then(function(piece) {
-        return piece.text().then(function(text) {
-            var options = {
-              strings: [text],
-              typeSpeed: 10,
-              startDelay: text_delay,
-              loop: false,
-              // Disable cursor due to unexpected positioning
-              showCursor: false,
-              cursorChar: "|",
-              onComplete: function() {
-                return $('.typed-cursor').remove();
-              }
-            };
-            if (main_typer){
-                main_typer.destroy();
-            }
-            pieceContent.innerHTML = "";
-            main_typer = new Typed(pieceContent, options);
-        });
-    });
+    if (piece.content != "no") {
+	    $('#piece-content').fadeIn(200);
+	    fetch(piece.content).then(function(piece) {
+	        return piece.text().then(function(text) {
+	            var options = {
+	              strings: [text],
+	              typeSpeed: 10,
+	              startDelay: text_delay,
+	              loop: false,
+	              // Disable cursor due to unexpected positioning
+	              showCursor: false,
+	              cursorChar: "|",
+	              onComplete: function() {
+	                return $('.typed-cursor').remove();
+	              }
+	            };
+	            if (main_typer){
+	                main_typer.destroy();
+	            }
+	            main_typer = new Typed(pieceContent, options);
+	        });
+	    });
+	}
 }
 
 
@@ -204,10 +215,6 @@ function showInfo() {
 
 function showMasthead() {
     $("#mastheadModal").modal("show");
-}
-
-function showVanitas() {
-    $("#vanitasModal").modal("show");
 }
 
 $(document).ready(initialise);
