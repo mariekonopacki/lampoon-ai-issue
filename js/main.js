@@ -52,7 +52,7 @@ function initialise() {
     setTimeout(
         function(){
             // Content Box Title Typer
-            randomBackTyper(".tag span", ['COMEDY BY ARTIFICIAL INTELLIGENCE', 'PIECES BY MACHINE LEARNING', 'CREATED BY LAMPOON A.I.']);
+            randomBackTyper(".tag span", ['COMEDY BY A.I.', 'PIECES BY MACHINE LEARNING', 'CREATED BY LAMPOON A.I.']);
             checkPath(path);
         },
         cover_wait_time);

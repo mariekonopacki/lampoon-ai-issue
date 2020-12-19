@@ -34,7 +34,7 @@ let pieces = {
     31: {title: "Jungle", author: "JLN", art: "no", content: "./pieces/31.txt"},
     32: {title: "The Penis", author: "JGS", art: "no", content: "./pieces/32.txt"},
     33: {title: "Australia Australia Australia Australia Australia Australia Australia Australia Australia Australia", author: "JFAR", art: "no", content: "./pieces/33.txt"},
-    34: {title: "THE LAMPOON AI#", author: "BJF", art: "./art/cover.JPEG", content: "no"}
+    34: {title: "THE LAMPOON AI#", author: "BJF", art: "./art/34.png", content: "no"}
 
 
 
