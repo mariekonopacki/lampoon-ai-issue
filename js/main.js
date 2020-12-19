@@ -20,18 +20,27 @@ function initialise() {
 
     // Main Title Typer
     randomBackTyper(".header-card-title", ['J.E.S.T.E.R.', 'J.E.S.T.T.A.', 'A.U.T.O.M.A', 'L.P.N. A.I']);
+
     // Stock Title Typer
     randomBackTyper(".stock-title h2", ['LAMPOON STOCK PORTFOLIO', 'LAMPOON "NOT STONKS" PORTFOLIO', 'LAMPOON "STONKS" PORTFOLIO']);
+
     // Stock Title Typer
     randomBackTyper(".editor-title h2", ['EDITORS', 'DEVELOPERS']);
+
     // Masthead Modal Title Typer
-    randomBackTyper(".masthead-title", ['Masthead','The Harvard Lampoon']);
-    randomBackTyper("#mastheadButton h2", ['MASTHEAD','MASTHEAD']);
+    // randomBackTyper(".masthead-title", ['Masthead','The Harvard Lampoon']);
+    // randomBackTyper("#mastheadButton h2", ['MASTHEAD','MASTHEAD']);
+
     // Info Modal Title Typer
-    randomBackTyper(".info-title", ['Info','Vanitas']);
-    randomBackTyper("#infoButton h2", ['INFO','VANITAS']);
+    // randomBackTyper(".info-title", ['Info','Vanitas']);
+    // randomBackTyper("#infoButton h2", ['INFO','VANITAS']);
+
+    // Prince Popup Typer
+    // randomBackTyper(".princePopupBody", ['Hallo! I am Scandanavian Prince Anders Ander, here to take you up and marry you in the American fashion. But, wait! I am without money, trapped in [location within 15 miles] and needed your help to buy my way to ticket to see and marry you the American way. All I need is [insert credit card information here] and I will be brought to you with my princely gold and American baseballs of diamonds. I am in desperate need of your help.']);
+
+
     // Card Upper Title Typer
-    randomBackTyper(".header-card-upper h2", ['The Harvard Lampoon', "The Lampoon AI#"]);
+    randomBackTyper(".header-card-upper h2", ['THE HARVARD LAMPOON', "THE AI#"]);
 
     var cover_wait_time = 0;
     if (localStorage.getItem("cover_loaded") === null) {
