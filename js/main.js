@@ -11,25 +11,19 @@ $(".piece-container").hide(0);
 
 // Onload function
 function initialise() {
-    console.log("init")
      try {
         loadStockChart();
+        loadMap();
     } catch (error) {
         console.error(error);
     }
 
-    // Main Title Typer
-    randomBackTyper(".header-card-title", ['J.E.S.T.E.R.', 'J.E.S.T.T.A.', 'A.U.T.O.M.A', 'L.P.N. A.I']);
-    // Stock Title Typer
-    randomBackTyper(".stock-title h2", ['LAMPOON STOCK PORTFOLIO', 'LAMPOON "NOT STONKS" PORTFOLIO', 'LAMPOON "STONKS" PORTFOLIO']);
     // Stock Title Typer
     randomBackTyper(".editor-title h2", ['EDITORS', 'DEVELOPERS']);
     // Masthead Modal Title Typer
     randomBackTyper(".masthead-title", ['Masthead','The Harvard Lampoon']);
-    randomBackTyper("#mastheadButton h2", ['MASTHEAD','MASTHEAD']);
     // Info Modal Title Typer
     randomBackTyper(".info-title", ['Info','Vanitas']);
-    randomBackTyper("#infoButton h2", ['INFO','VANITAS']);
     // Card Upper Title Typer
     randomBackTyper(".header-card-upper h2", ['The Harvard Lampoon', "The Lampoon AI#"]);
 
@@ -50,7 +44,6 @@ function initialise() {
 }
 
 window.addEventListener('hashchange', function(){
-    console.log("yo")
     const path = location.hash;
     checkPath(path);
 })
@@ -84,9 +77,8 @@ function checkPath(path){
         pieceNumber = path.substr(1);
     } else{
         // Select random piece to load page with
-        // pieceNumber = Math.floor(Math.random() * highestPieceKey)
-        // Select cover piece to load page with
-        pieceNumber = 34
+        pieceNumber = Math.floor(Math.random() * highestPieceKey)
+        window.location.hash = pieceNumber
     }
     let piece = pieces[pieceNumber]
     loadPiece(piece);
@@ -94,57 +86,51 @@ function checkPath(path){
 
 function loadPiece(piece) {
     // Load title and piece content in HTML
-    console.log(piece)
     titleContent.innerHTML = piece.title;
-    pieceContent.innerHTML = "";
-     $('#piece-content').hide();
-     $('#art-content').attr('src', "");
      $('#art-content').hide();
-    var text_delay = 1000;
+     $('.piece-text').hide();
+
     if (piece.art != "no"){
         $('#art-content').attr('src', piece.art);
         $('#art-content').fadeIn(200);
-        text_delay = 3000;
+    } else {
+        $('#art-content').removeAttr('src');
+        $('#art-content').css('display', 'none')
     }
-    if (piece.content != "no") {
-	    $('#piece-content').fadeIn(200);
-	    fetch(piece.content).then(function(piece) {
-	        return piece.text().then(function(text) {
-	            var options = {
-	              strings: [text],
-	              typeSpeed: 10,
-	              startDelay: text_delay,
-	              loop: false,
-	              // Disable cursor due to unexpected positioning
-	              showCursor: false,
-	              cursorChar: "|",
-	              onComplete: function() {
-	                return $('.typed-cursor').remove();
-	              }
-	            };
-	            if (main_typer){
-	                main_typer.destroy();
-	            }
-	            main_typer = new Typed(pieceContent, options);
-	        });
-	    });
-	}
+
+    fetch(piece.content).then(function(piece) {
+        return piece.text().then(function(text) {
+
+            pieceContent.innerHTML = text;
+
+            $('.piece-text').fadeIn(400);
+
+            if ($('#piece-content').get(0).scrollHeight > $('.piece-text').height()) {
+                //if 'true', the content overflows the tab: we show the hidden link
+                $('.piece-text').css('padding-right', '30px');
+            } else {
+                $('.piece-text').css('padding-right', '0px');
+            }
+        })
+    })
 }
 
 
 function nextPiece() {
+    pieceNumber = parseInt(location.hash.substr(1))
+
     // Loop through array of pieces
-    console.log("changing piece")
     if (pieceNumber >= highestPieceKey) {
         pieceNumber = 0
     } else {
         pieceNumber += 1
     }
     window.location.hash = pieceNumber
-    loadPiece(pieces[pieceNumber])
 }
 
 function previousPiece() {
+    pieceNumber = parseInt(location.hash.substr(1))
+
     // Loop through array of pieces
     if (pieceNumber > 0) {
         pieceNumber -= 1
@@ -152,7 +138,6 @@ function previousPiece() {
         pieceNumber = highestPieceKey
     }
     window.location.hash = pieceNumber
-    loadPiece(pieces[pieceNumber])
 }
 
 function loadStockChart() {
@@ -162,6 +147,8 @@ function loadStockChart() {
         height = $("#stock-card").height() - 1
 
     let svg = d3.select("#stock-card").append("svg").attr("class", "svg")
+        .attr("width", width)
+        .attr("height", height);
 
     // Set the ranges
     var x = d3.scaleLinear().range([0, width]);
@@ -209,6 +196,102 @@ function loadStockChart() {
 
 }
 
+function loadMap() {
+
+    // Set the dimensions of the graph
+    let  mapWidth = $("#map-vis").width() - 1,
+        mapHeight = $("#map-vis").height() - 1
+
+
+    let svg = d3.select("#map-vis").append("svg").attr("class", "svg")
+        .attr("width", mapWidth)
+        .attr("height", mapHeight);
+
+    // Add a clipPath: everything out of this area won't be drawn.
+    var clip = svg.append("defs").append("svg:clipPath")
+        .attr("id", "map-clip")
+        .append("svg:rect")
+        .attr("width", mapWidth )
+        .attr("height", mapHeight )
+        .attr("x", 0)
+        .attr("y", 0);
+
+    let mapsvg = svg.append('g')
+
+    let projection = d3.geoAlbersUsa().scale(400).translate([mapWidth/2, mapHeight/2]);
+
+    let path = d3.geoPath()
+        .projection(projection);
+
+    //  tooltip
+    var tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+    d3.json("js/states.json").then(function(topojsonData) {
+
+        mapsvg.append("g")
+            .attr("clip-path","url(#map-clip)")
+            .attr("class", "states")
+            .selectAll("path")
+            .data(topojsonData.features)
+            .enter().append("path")
+            .attr("d", path)
+             .attr("class", "map")
+            .attr("id", d => d.properties.abbr)
+            .style('shape-rendering','crispEdges')
+            .style('vector-effect','non-scaling-stroke');
+
+        let jerseyCoordinates = [[[-74.07,39.91], "Yoo hoo!"],[[-74.012,40.20], "Hey Big Boy..."],[[-74.15,39.75], "I live underneath the Boardwalk... Find me"],[[-74.8,38.99],"I tell people I'm from NYC."],[[-74.34,39.50], "Passionate. Adventurous. Curious. Not allowed to cross state lines, so you'll have to meet me."],[[-74.65,39.2], "I am being held hostage. No one knows where I am except for you. Send help. My life is in your hands."]]
+        mapsvg.append("g")
+            .selectAll("circle")
+            .data(jerseyCoordinates).enter()
+            .append("circle")
+            .attr("class", "jersey-shore")
+            .attr("r", .5)
+            .attr("transform", d => {return "translate(" + projection(d[0]) + ")";})
+            .attr("fill", 'rgba(78,215,47,.9)')
+            .style("cursor", "pointer")
+            .on("mouseover", function(event, d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html(d[1])
+                    .style("left", (event.pageX + 20) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            })
+            .on("mouseout", function(d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
+
+        zoomtoJersey();
+
+    })
+
+    function zoomtoJersey() {
+        let jersey = d3.select('#NJ');
+
+        var bbox = jersey.node().getBBox(),
+            centroid = projection([-74.071277,39.950060]),
+            zoomScaleFactor = (mapWidth / bbox.width) * .3,
+            zoomX = -centroid[0],
+            zoomY = -centroid[1];
+
+        mapsvg.transition().duration(20000).ease(d3.easeSin)
+            .attr("transform", "scale(" + zoomScaleFactor + ")" + "translate(" + (zoomX + (mapWidth * .04)) + "," + (zoomY + (mapHeight * .04)) + ")")
+
+        d3.select('#NJ').style("fill", 'rgba(60,169,34,0.8)')
+
+        mapsvg.append('text').text("New Jersey").attr("class", "map-header")
+            .attr("transform", d => {return "translate(" + projection([-73.8,39.45]) + ")";})
+
+    }
+
+
+}
+
 function showInfo() {
     $("#infoModal").modal("show");
 }
@@ -216,5 +299,21 @@ function showInfo() {
 function showMasthead() {
     $("#mastheadModal").modal("show");
 }
+
+function showLetter() {
+    console.log('show')
+    $("#mailModal").modal("show");
+}
+
+$('.why-am-i span').hover(function() {
+    $('.not-an-ad.mb-2').css('transform', 'scale(1.5)translate(-3vw, -3vh)')
+    $('.ad-tooltip').css('opacity', 1)
+}, function() {
+    $('.not-an-ad.mb-2').css('transform', 'scale(1)')
+    $('.ad-tooltip').css('opacity', 0)
+
+})
+
+$('question').hover(function(){})
 
 $(document).ready(initialise);

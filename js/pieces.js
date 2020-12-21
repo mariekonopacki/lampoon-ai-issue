@@ -1,13 +1,13 @@
 let pieces = {
 
     0: {title: "The Breakfast Club", author: "JGS", art: "no", content: "./pieces/0.txt"},
-    1: {title: "A Prediciton Made on 2/20/20", author: "JGS", art: "./art/1.JPG", content: "./pieces/1.txt"},
+    1: {title: "A Prediciton Made on 2/20/20", author: "JGS", art: "./art/1.png", content: "./pieces/1.txt"},
     2: {title: "My Father", author: "JGS", art: "no", content: "./pieces/2.txt"},
     3: {title: "The Five to Sleep Over", author: "VIN", art: "no", content: "./pieces/3.txt"},
     4: {title: "Varsity", author: "", art: "no", content: "./pieces/4.txt"},
     5: {title: "Family Matters", author: "NISH", art: "no", content: "./pieces/5.txt"},
-    6: {title: "Problems", author: "GYS", art: "./art/6.jpg", content: "./pieces/6.txt"},
-    7: {title: "Miami Nights", author: "MMM", art: "./art/7.jpg", content: "./pieces/7.txt"},
+    6: {title: "Problems", author: "GYS", art: "./art/6.png", content: "./pieces/6.txt"},
+    7: {title: "Miami Nights", author: "MMM", art: "./art/7.png", content: "./pieces/7.txt"},
     8: {title: "COVID", author: "ME", art: "./art/8.png", content: "./pieces/8.txt"},
     9: {title: "Snoop Dogg", author: "JGS/SHK", art: "no", content: "./pieces/9.txt"},
     10: {title: "Middle America", author: "EBC", art: "no", content: "./pieces/10.txt"},
@@ -34,8 +34,5 @@ let pieces = {
     31: {title: "Jungle", author: "JLN", art: "no", content: "./pieces/31.txt"},
     32: {title: "The Penis", author: "JGS", art: "no", content: "./pieces/32.txt"},
     33: {title: "Australia Australia Australia Australia Australia Australia Australia Australia Australia Australia", author: "JFAR", art: "no", content: "./pieces/33.txt"},
-    34: {title: "THE LAMPOON AI#", author: "BJF", art: "./art/cover.JPEG", content: "no"}
-
-
 
 }
