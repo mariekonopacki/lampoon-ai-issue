@@ -18,14 +18,22 @@ function initialise() {
         console.error(error);
     }
 
+    // Main Title Typer
+    randomBackTyper(".header-card-title", ['J.E.S.T.E.R.', 'J.E.S.T.T.A.', 'A.U.T.O.M.A', 'L.P.N. A.I']);
+
+    // Stock Title Typer
+    randomBackTyper(".stock-title h2", ['LAMPOON STOCK PORTFOLIO', 'LAMPOON "NOT STONKS" PORTFOLIO', 'LAMPOON "STONKS" PORTFOLIO']);
+
     // Stock Title Typer
     randomBackTyper(".editor-title h2", ['EDITORS', 'DEVELOPERS']);
+
     // Masthead Modal Title Typer
     randomBackTyper(".masthead-title", ['Masthead','The Harvard Lampoon']);
     // Info Modal Title Typer
     randomBackTyper(".info-title", ['Info','Vanitas']);
+
     // Card Upper Title Typer
-    randomBackTyper(".header-card-upper h2", ['The Harvard Lampoon', "The Lampoon AI#"]);
+    randomBackTyper(".header-card-upper h2", ['THE HARVARD LAMPOON', "THE AI#"]);
 
     var cover_wait_time = 0;
     if (localStorage.getItem("cover_loaded") === null) {
@@ -37,7 +45,7 @@ function initialise() {
     setTimeout(
         function(){
             // Content Box Title Typer
-            randomBackTyper(".tag span", ['COMEDY BY ARTIFICIAL INTELLIGENCE', 'PIECES BY MACHINE LEARNING', 'CREATED BY LAMPOON A.I.']);
+            randomBackTyper(".tag span", ['COMEDY BY A.I.', 'PIECES BY MACHINE LEARNING', 'CREATED BY LAMPOON A.I.']);
             checkPath(path);
         },
         cover_wait_time);
