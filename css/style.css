@@ -187,6 +187,10 @@ h3 {
     border-radius: 3px;
 }
 
+.modal-body {
+    margin: 0;
+    padding: 10px 0 5px 0;
+}
 .popup-body {
     border: 2px solid #2ae942;
     background-color: rgba(27,189,98, 0.8);
@@ -262,34 +266,48 @@ h3 {
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 #email {
     width: 60%;
-    background-color: rgba(25, 162, 43, 0.4);
     border-radius: 3px 0 0 3px;
-    border: 1px solid #2ae942;
+    border: 2px solid #0f6e1b;
     border-right: none;
-    color: #175d37;
-    font-size: 80%;
-    padding: 5px 10px;
+    color: #092f06;
+    font-size: 90%;
+    padding: 5px 15px;
+    background-color: rgba(34, 172, 78, 0.3);
+
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .05) 1px, transparent 1px);
 }
 
 #submit {
     font-size: 80%;
     width: 40%;
-    background-color: rgba(8, 84, 18, 0.4);
+    background-color: rgba(3, 43, 20, 0.8);
+
     border-radius: 0 3px 3px 0;
-    border: 1px solid #5dfea7;
-    color: #5dfea7;
+    border: 1px solid #066b1f;
+    border-left: none;
+    color: #2ae942;
+    font-weight: 600;
     padding: 5px 10px;
+
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .10) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
     /*border: 2px solid #2ae942;*/
 }
 
 ::placeholder {
-    color: #0e542e;
-
+    color: #0f4c09;
+    font-weight: 600;
+    font-size: 90%;
 }
 
 .tag {
