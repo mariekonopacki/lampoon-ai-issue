@@ -326,7 +326,7 @@ h3 {
     border-radius: 3px;
 }
 
-.question {
+.x-out {
     font-family: 'VT323', monospace;
     height: 20px;
     width: 20px;
@@ -674,10 +674,11 @@ p#piece-content {
     /*margin: 0 .5vw;*/
     display: inline-block;
     /*position: relative;*/
+    cursor: default;
 }
 
 .letter text {
-    pointer-events: none;
+    cursor: default;
 }
 
 .window {
@@ -696,7 +697,7 @@ p#piece-content {
 
 }
 
-.not-an-ad {
+.aspenImage {
     background-color: rgba(27,189,98, 0.8);
     background-size: 3px 3px;
     background-image:
@@ -754,6 +755,63 @@ p#piece-content {
     border-width: 6px;
     border-style: solid;
     border-color: #2ae942 transparent transparent transparent;
+}
+
+
+.question {
+    font-family: 'VT323', monospace;
+    height: 20px;
+    width: 20px;
+    background-color: rgb(8, 117, 45);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .10) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
+    color: #5dfea7;
+    border: 2px solid #5dfea7;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: default;
+}
+
+
+.question-tooltip {
+    font-size: 11px;
+    font-family: 'Overpass Mono', monospace;
+
+    opacity: 0;
+    padding: 11px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(8, 117, 45);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .05) 1px, transparent 1px);
+    color: #5dfea7;
+    border: 1px solid #5dfea7;
+    border-radius: 5px;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    transition: all 1s;
+    z-index: 100;
+    width: 450px;
+    pointer-events: none;
+}
+
+.question-tooltip::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    right: 50%;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #5dfea7 transparent;
 }
 
 .mail {

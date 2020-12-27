@@ -328,16 +328,22 @@ function showLetter() {
 }
 
 $('.why-am-i span').hover(function() {
-    $('.not-an-ad.mb-2').css('transform', 'scale(1.5)translate(-3vw, -3vh)')
+    $('.aspenImage.mb-2').css('transform', 'scale(1.5)translate(-3vw, -3vh)')
+    $('#gray-filter-anim-in')[0].beginElement();
     $('.ad-tooltip').css('opacity', 1)
 }, function() {
-    $('.not-an-ad.mb-2').css('transform', 'scale(1)')
+    $('.aspenImage.mb-2').css('transform', 'scale(1)')
+    $('#gray-filter-anim-out')[0].beginElement();
     $('.ad-tooltip').css('opacity', 0)
+})
 
+$('.question').hover(function() {
+    $('.question-tooltip').css('opacity', 1)
+}, function() {
+    $('.question-tooltip').css('opacity', 0)
 })
 
 $('img').hover(function() {
-
     $('#gray-filter-anim-in')[0].beginElement();
 }, function() {
     $('#gray-filter-anim-out')[0].beginElement();
@@ -374,15 +380,5 @@ document.getElementById('player').addEventListener("timeupdate", function() {
     $('.progress').css("width", player.currentTime / player.duration * 100 + '%')
 
 });
-
-
-
-//
-// $('audio').ontimeupdate = function() {
-//     console.log('time update')
-//     $('.progress').css("width", $('#player').currentTime / $('#player').duration * 100 + '%')
-// }
-
-// $('question').hover(function(){})
 
 $(document).ready(initialise);
