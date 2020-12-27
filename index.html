@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
     <link rel="stylesheet" href="css/style.css">
 
 
@@ -172,7 +173,18 @@
             </div>
             <div class="right-display-row-2">
                 <div class="music-player">
-                    f
+                    <audio id="player">
+                    </audio>
+                    <div class="player-buttons">
+                        <button onclick="prevSong()"><i class="fa fa-backward"></i></button>
+                        <button onclick="document.getElementById('player').play()"><i class="fa fa-play"></i></button>
+                        <button onclick="document.getElementById('player').pause()"><i class="fa fa-pause"></i></button>
+                        <button onclick="nextSong()"><i class="fa fa-forward"></i></button>
+                    </div>
+                    <div class="player-info">
+                        <h1>The Social Network (2010) Soundtrack</h1>
+                        <div class="progress-holder"><div class="progress"></div></div>
+                    </div>
                 </div>
                 <button class="mail" onclick="showLetter()">
                     <div class="envelope-wrap">
@@ -189,6 +201,7 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="https://d3js.org/d3-zoom.v2.min.js"></script>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

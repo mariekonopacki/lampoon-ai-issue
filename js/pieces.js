@@ -1,7 +1,7 @@
 let pieces = {
 
     0: {title: "The Breakfast Club", author: "JGS", art: "no", content: "./pieces/0.txt"},
-    1: {title: "A Prediciton Made on 2/20/20", author: "JGS", art: "./art/1.png", content: "./pieces/1.txt"},
+    1: {title: "A Prediciton Made on 2/20/20", author: "JGS", art: "./art/1.JPG", content: "./pieces/1.txt"},
     2: {title: "My Father", author: "JGS", art: "no", content: "./pieces/2.txt"},
     3: {title: "The Five to Sleep Over", author: "VIN", art: "no", content: "./pieces/3.txt"},
     4: {title: "Varsity", author: "", art: "no", content: "./pieces/4.txt"},

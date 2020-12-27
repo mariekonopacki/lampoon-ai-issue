@@ -3,6 +3,10 @@
 let pieceContent = document.getElementById("piece-content");
 let titleContent = document.getElementById("piece-title");
 
+let currentSong = 0;
+let trackURLs = [];
+var clientAppend = '?client_id=278594df9a311b2a1a56251b3a2b0fbe';
+
 let pieceNumber = 0;
 var main_typer;
 const path = location.hash;
@@ -17,12 +21,6 @@ function initialise() {
     } catch (error) {
         console.error(error);
     }
-
-    // Main Title Typer
-    randomBackTyper(".header-card-title", ['J.E.S.T.E.R.', 'J.E.S.T.T.A.', 'A.U.T.O.M.A', 'L.P.N. A.I']);
-
-    // Stock Title Typer
-    randomBackTyper(".stock-title h2", ['LAMPOON STOCK PORTFOLIO', 'LAMPOON "NOT STONKS" PORTFOLIO', 'LAMPOON "STONKS" PORTFOLIO']);
 
     // Stock Title Typer
     randomBackTyper(".editor-title h2", ['EDITORS', 'DEVELOPERS']);
@@ -49,6 +47,22 @@ function initialise() {
             checkPath(path);
         },
         cover_wait_time);
+
+
+    // Initialize soundcloud music player
+    SC.initialize({
+        client_id: '278594df9a311b2a1a56251b3a2b0fbe'
+    });
+
+    // Retrieve soundcloud playlist
+    SC.get('/playlists/1052172664').then(function(playlist){
+        playlist.tracks.forEach(function(track) {
+            trackURLs.push(`${track.stream_url + clientAppend}`)
+        });
+    }).then(function() {
+        $('#player').attr('src', trackURLs[currentSong]);
+        document.getElementById('player').load();
+    })
 }
 
 window.addEventListener('hashchange', function(){
@@ -322,6 +336,44 @@ $('.why-am-i span').hover(function() {
 
 })
 
-$('question').hover(function(){})
+function playSong(songNumber) {
+    $('#player').attr('src', trackURLs[songNumber]);
+    document.getElementById('player').play();
+}
+
+
+function nextSong() {
+    if (currentSong <= trackURLs.length) {
+        currentSong += 1
+    } else {
+        currentSong = 0;
+    }
+    console.log(currentSong)
+    playSong(currentSong)
+}
+
+function prevSong() {
+    if (currentSong <= 0) {
+        currentSong = trackURLs.length;
+    } else {
+        currentSong -= 1
+    }
+    playSong(currentSong)
+}
+
+document.getElementById('player').addEventListener("timeupdate", function() {
+    let player = document.getElementById('player')
+    console.log('time update', player.currentTime)
+    $('.progress').css("width", player.currentTime / player.duration * 100 + '%')
+
+});
+
+//
+// $('audio').ontimeupdate = function() {
+//     console.log('time update')
+//     $('.progress').css("width", $('#player').currentTime / $('#player').duration * 100 + '%')
+// }
+
+// $('question').hover(function(){})
 
 $(document).ready(initialise);

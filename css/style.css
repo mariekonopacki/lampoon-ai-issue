@@ -539,6 +539,10 @@ p#piece-content {
     /*position: relative;*/
 }
 
+.letter text {
+    pointer-events: none;
+}
+
 .window {
     background-color: rgba(4, 47, 21, 0.9);
     background-size: 3px 3px;
@@ -602,7 +606,6 @@ p#piece-content {
     top: -50px;
     left: -20px;
     transition: all 1s;
-
 }
 
 .ad-tooltip::after {
@@ -804,6 +807,86 @@ path.map {
             linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
     border: 1px solid #23ba36;
     border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.player-buttons {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+button i {
+    background-color: rgb(17, 169, 51);
+    background-size: 3px 3px;
+    background-image: linear-gradient(to right, rgba(4, 143, 68, 0.6) 1px, transparent 1px), linear-gradient(to bottom, rgba(4, 143, 68, 0.6) 1px, transparent 1px);
+    border-radius: 3px;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #2ae942;
+}
+
+.fa.fa-play {
+    font-size: 20px;
+    line-height: 40px;
+    border-radius: 50%;
+    border: solid 1px #30ff4c;
+    padding-left: 3px;
+    height: 40px;
+    width: 40px;
+    -webkit-text-stroke-color: #30ff4c;
+
+}
+
+.fa.fa-forward, .fa.fa-backward {
+    background-color: rgba(0,0,0,.3);
+    -webkit-text-stroke-color: #19cb30;
+    margin: 0 15px;
+}
+
+.player-info {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 15px;
+}
+
+
+.player-info h1 {
+    text-align: center;
+    color: #2ae942;
+    font-size: 10px;
+    font-weight: 400;
+    font-family: 'Overpass Mono', monospace;
+}
+
+
+.progress-holder {
+    width: 100%;
+    height: 6px;
+    border: 1px solid #2ae942;
+    border-radius: 3px;
+    position: relative;
+    background-color: rgba(0,0,0,.7);
+}
+
+.progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background-color: rgba(20, 203, 61, 0.6);
 }
 
 /*IP: Hiding dashes for now to deal with responsiveness. Can add back later if needed */
