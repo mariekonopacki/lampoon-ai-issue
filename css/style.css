@@ -859,7 +859,7 @@ p#piece-content {
 
 .country-map {
     width: 53%;
-    height: 100%;
+    /*height: 100%;*/
     margin-left: 3%;
     background-color: rgba(5,54,25, 0.9);
     background-size: 3px 3px;
