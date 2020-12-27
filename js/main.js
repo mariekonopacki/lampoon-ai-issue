@@ -26,9 +26,9 @@ function initialise() {
     randomBackTyper(".editor-title h2", ['EDITORS', 'DEVELOPERS']);
 
     // Masthead Modal Title Typer
-    randomBackTyper(".masthead-title", ['Masthead','The Harvard Lampoon']);
+    randomBackTyper(".masthead-title", ['MASTHEAD','THE HARVARD LAMPOON']);
     // Info Modal Title Typer
-    randomBackTyper(".info-title", ['Info','Vanitas']);
+    randomBackTyper(".info-title", ['INFO','VANITAS']);
 
     // Card Upper Title Typer
     randomBackTyper(".header-card-upper h2", ['THE HARVARD LAMPOON', "THE AI#"]);
@@ -323,7 +323,6 @@ function showMasthead() {
 }
 
 function showLetter() {
-    console.log('show')
     $("#mailModal").modal("show");
 }
 
@@ -349,11 +348,23 @@ $('img').hover(function() {
     $('#gray-filter-anim-out')[0].beginElement();
 })
 
+$('.mail').hover(function() {
+    $('.fa.fa-envelope').animate({'backgroundColor':'rgb(21,205,64)'}, 'fast')
+
+}, function() {
+    $('.fa.fa-envelope').animate({'backgroundColor':'rgb(14, 134, 41)'}, 'fast')
+})
+
+$('.pb').hover(function() {
+    $(this).find('i').animate({'backgroundColor': 'rgb(19,179,56)'}, 'fast')
+}, function() {
+    $(this).find('i').animate({'backgroundColor': 'rgb(6, 110, 30)'}, 'fast')
+})
+
 function playSong(songNumber) {
     $('#player').attr('src', trackURLs[songNumber]);
     document.getElementById('player').play();
 }
-
 
 function nextSong() {
     if (currentSong <= trackURLs.length) {
@@ -376,9 +387,18 @@ function prevSong() {
 
 document.getElementById('player').addEventListener("timeupdate", function() {
     let player = document.getElementById('player')
-    console.log('time update', player.currentTime)
     $('.progress').css("width", player.currentTime / player.duration * 100 + '%')
-
 });
+
+document.getElementById('player').addEventListener("playing", function() {
+    $('.fa.fa-play').css("background-color", 'rgba(19,179,56,0.5)')
+    $('.play-button').css("background-color", 'rgba(7,122,33,0.5)')
+});
+
+document.getElementById('player').addEventListener("pause", function() {
+    $('.play-button').css("background-color", 'transparent')
+});
+
+
 
 $(document).ready(initialise);
