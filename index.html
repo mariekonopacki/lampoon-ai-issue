@@ -20,7 +20,7 @@
         <div class="modal-dialog general-container">
           <!-- Modal content-->
           <div class="modal-content">
-            <div class="modal-header d-flex justify-content-center popup-container">
+            <div class="modal-header d-flex justify-content-center popup-header">
               <center><h4 class="info-title modal-title" style="color: #2ae942">Info</h4></center>
             </div>
             <div class="modal-body popup-body">
@@ -46,7 +46,7 @@
         <div class="modal-dialog general-container">
           <!-- Modal content-->
           <div class="modal-content">
-            <div class="modal-header d-flex justify-content-center popup-container">
+            <div class="modal-header d-flex justify-content-center popup-header">
               <center><h4 class="masthead-title modal-title" style="color: #2ae942">Masthead</h4></center>
             </div>
             <div class="modal-body popup-body">
@@ -66,7 +66,7 @@
         <div class="modal-dialog general-container">
           <!-- Modal content-->
           <div class="modal-content">
-            <div class="modal-header d-flex justify-content-center popup-container">
+            <div class="modal-header d-flex justify-content-center popup-header">
               <center><h4 class="vanitas-title modal-title" style="color: #2ae942">Info</h4></center>
             </div>
             <div class="modal-body popup-body">
@@ -86,14 +86,20 @@
             <div class="modal-dialog general-container">
                 <!-- Modal content-->
                 <div class="modal-content">
-                    <div class="modal-header d-flex justify-content-center popup-container">
-                        Instant Message
+                    <div class="modal-header d-flex popup-header">
+                        <span>INSTANT MESSAGE</span>
+                        <button class="question" data-dismiss="modal">x</button>
                     </div>
-                    <div class="modal-body popup-body">
-                        <span>Hallo! I am Scandanavian Prince Anders Ander, here to take you up and marry you in the American fashion. But, wait! I am without money, trapped in [location within 15 miles] and needed your help to buy my way to ticket to see and marry you the American way. All I need is [insert credit card information here] and I will be brought to you with my princely gold and American baseballs of diamonds. I am in desperate need of your help.</span>
+                    <div class="modal-body popup-message-container">
+                        <div class="popup-message-img"><img src="popups/prince.png"></div>
+                        <div class="popup-body-message">
+                            <span>Hallo! I am Scandanavian Prince Anders Ander, here to take you up and marry you in the American fashion. But, wait! I am without money, trapped in <i class="mile-range">[location within 15 miles]</i> and needed your help to buy my way to ticket to see and marry you the American way. <br><br>All I need is your email address and I will be brought to you with my princely gold and American baseballs of diamonds. I am in desperate need of your help.</span>
+                            <div class="email-input">
+                                <input type="text" id="email" placeholder="Your Email Address">
+                                <input type="submit" id="submit">
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-footer general-container">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: #2ae942">Exit</button>
                     </div>
                 </div>
             </div>
@@ -143,7 +149,7 @@
             <div class="piece">
                 <h3 id="piece-title">Title of Piece</h3>
                 <div class="piece-text">
-                    <img id="art-content" src="" alt="Art">
+                    <div id="art-content-holder"><img id="art-content" src="" alt="Art"/></div>
 
                     <p id="piece-content">Placeholder</p>
 
@@ -163,7 +169,9 @@
             </div>
 
             <div class="right-display-row-1">
-                <img class="cover" id="cover" src="./art/cover.png" alt="Cover">
+                <div class="cover">
+                    <img id="cover" src="./art/cover.png" alt="Cover">
+                </div>
 
                 <div class="country-map">
                     <div class="tag map"><h2>SEXY SINGLES WHO WANT YOU</h2></div>
@@ -197,6 +205,21 @@
             </div>
         </div>
     </div>
+
+    <svg class="defs-only" style="display:none">
+        <filter id="monochrome" color-interpolation-filters="sRGB"
+                x="0" y="0" height="100%" width="100%">
+            <feColorMatrix type="matrix"
+                           values=".05 0.35 0 0 0
+              .2 0.4 0.15 0.05 0
+              0 .08 0.3 0 0
+              .4 0 0 1 -.1 ">
+                <animate id="gray-filter-anim-in"  attributeName="values" attributeType="XML" begin="indefinite" dur="2" end="indefinite" from=".05 0.35 0 0 0 .2 0.4 0.15 0.05 0 0 .08 0.3 0 0 .4 0 0 1 -.1 " to="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" fill="freeze" />
+                <animate id="gray-filter-anim-out" attributeName="values" attributeType="XML" begin="indefinite" dur="0.5" end="indefinite" to=".05 0.35 0 0 0 .2 0.4 0.15 0.05 0 0 .08 0.3 0 0 .4 0 0 1 -.1" fill="freeze" />
+
+            </feColorMatrix>
+        </filter>
+    </svg>
 
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>

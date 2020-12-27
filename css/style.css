@@ -14,7 +14,15 @@ html {
 body {
     background-color: black;
     font-family: 'Overpass Mono', monospace;
+    overflow-y: hidden;
+}
 
+img {
+    -webkit-filter: url(#monochrome);
+    filter:  url(#monochrome);
+    width: 100%;
+    opacity: 90%;
+    transition: 1s;
 }
 
 .background-grid {
@@ -149,17 +157,34 @@ h3 {
     flex-direction: column;
 }
 
-.popup-container {
-    background-color: rgba(5,54,25, 0.9);
+.modal-dialog {
+    max-width: 600px;
+}
+
+.modal-content {
+    background-color: transparent;
+}
+
+.popup-header {
+    background-color: rgba(0,0,0,.5);
+
     background-size: 3px 3px;
     background-image:
             linear-gradient(to right, rgba(23, 255, 70, .10) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
-    border: 1px solid #2ae942;
-    border-radius: 5px;
-    padding: 7px;
+
+    font-size: 16px;
     display: flex;
-    /*flex-direction: column;*/
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    color: #2ae942;
+    height: 7%;
+    min-height: 7%;
+    margin-bottom: 7px;
+    border: 1px solid #2ae942;
+    border-radius: 3px;
 }
 
 .popup-body {
@@ -174,6 +199,97 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.popup-message-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.popup-body-message {
+    border: 2px solid #2ae942;
+    background-color: rgba(27,189,98, 0.8);
+    background-size: 3px 3px;
+    background-image:
+            linear-gradient(to right, rgba(23, 255, 70, .06) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 255, 70, .06) 1px, transparent 1px);
+    border-radius: 3px;
+    color: #092f06;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 70%;
+    padding: 25px 20px;
+    position: relative;
+}
+
+.popup-body-message::after {
+    content: " ";
+    position: absolute;
+    top: 60px;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #2ae942 transparent transparent;
+}
+
+.mile-range {
+    color: #0f4c09;
+    font-weight: 600;
+    font-size: 90%;
+}
+
+.popup-message-img {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
+
+}
+
+.popup-message-img img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border: 2px solid #2ae942;
+
+}
+
+.email-input {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#email {
+    width: 60%;
+    background-color: rgba(25, 162, 43, 0.4);
+    border-radius: 3px 0 0 3px;
+    border: 1px solid #2ae942;
+    border-right: none;
+    color: #175d37;
+    font-size: 80%;
+    padding: 5px 10px;
+}
+
+#submit {
+    font-size: 80%;
+    width: 40%;
+    background-color: rgba(8, 84, 18, 0.4);
+    border-radius: 0 3px 3px 0;
+    border: 1px solid #5dfea7;
+    color: #5dfea7;
+    padding: 5px 10px;
+    /*border: 2px solid #2ae942;*/
+}
+
+::placeholder {
+    color: #0e542e;
+
 }
 
 .tag {
@@ -240,18 +356,21 @@ h3 {
     overflow-y: hidden;
 }
 
-
-#art-content {
+#art-content-holder {
     float: right;
     margin-left: 30px;
     padding: 10px;
-    background-color: rgba(14, 110, 54, 0.9);
+    background-color: rgba(16, 71, 39, 0.9);
     background-size: 3px 3px;
     background-image: linear-gradient(to right, rgba(23, 255, 70, .10) 1px, transparent 1px), linear-gradient(to bottom, rgba(23, 255, 70, .10) 1px, transparent 1px);
     border: 1px solid #085611;
     border-radius: 5px;
     width: 40%;
+}
+
+#art-content {
     object-fit: contain;
+    opacity: 70%;
 }
 
 
@@ -560,7 +679,6 @@ p#piece-content {
 }
 
 .not-an-ad {
-    border: 1px solid #23ba36;
     background-color: rgba(27,189,98, 0.8);
     background-size: 3px 3px;
     background-image:
@@ -572,6 +690,8 @@ p#piece-content {
     flex-grow: 1;
     overflow-y: hidden;
     transition: all 1s;
+    border: 2px solid #45ee92;
+
 }
 
 .why-am-i {
@@ -711,8 +831,12 @@ p#piece-content {
     border-radius: 5px;
     padding: 7px;
 
-
     max-width: 47%;
+}
+
+.cover img {
+    border: 1px solid #45ee92;
+    border-radius: 5px;
 }
 
 .country-map {
@@ -756,8 +880,6 @@ path.map {
 }
 
 .tooltip {
-
-    /*font-family: 'VT323', monospace;*/
     font-size: 11px;
     font-family: 'Overpass Mono', monospace;
     color: #2ae942;
@@ -784,7 +906,7 @@ path.map {
     content: " ";
     position: absolute;
     top: 50%;
-    right: 100%; /* To the left of the tooltip */
+    right: 100%;
     margin-top: -5px;
     border-width: 6px;
     border-style: solid;

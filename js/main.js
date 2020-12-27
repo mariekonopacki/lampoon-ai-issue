@@ -109,15 +109,15 @@ function checkPath(path){
 function loadPiece(piece) {
     // Load title and piece content in HTML
     titleContent.innerHTML = piece.title;
-     $('#art-content').hide();
+     $('#art-content-holder').hide();
      $('.piece-text').hide();
 
     if (piece.art != "no"){
         $('#art-content').attr('src', piece.art);
-        $('#art-content').fadeIn(200);
+        $('#art-content-holder').fadeIn(200);
     } else {
         $('#art-content').removeAttr('src');
-        $('#art-content').css('display', 'none')
+        $('#art-content-holder').css('display', 'none')
     }
 
     fetch(piece.content).then(function(piece) {
@@ -336,6 +336,13 @@ $('.why-am-i span').hover(function() {
 
 })
 
+$('img').hover(function() {
+
+    $('#gray-filter-anim-in')[0].beginElement();
+}, function() {
+    $('#gray-filter-anim-out')[0].beginElement();
+})
+
 function playSong(songNumber) {
     $('#player').attr('src', trackURLs[songNumber]);
     document.getElementById('player').play();
@@ -367,6 +374,8 @@ document.getElementById('player').addEventListener("timeupdate", function() {
     $('.progress').css("width", player.currentTime / player.duration * 100 + '%')
 
 });
+
+
 
 //
 // $('audio').ontimeupdate = function() {
