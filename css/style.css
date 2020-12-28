@@ -127,6 +127,8 @@ h3 {
     /*top: -10px;
     left: -15px;*/
     z-index: 300;
+    height: 3.5vh;
+    min-height: 3.5vh;
 }
 
 .header-card-upper h2 {
